@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# A script to update a linux distro based on Arch, Fedora or Debian
+# A script to update a linux distro based on Arch, OpenSUSE, Fedora or Debian.
 #
 # Copyright (C) 2024 Ronald Jørnsøn
 # 45grn6meov@runbox.email
@@ -23,8 +23,18 @@ if grep -q "Arch" $release_file ; then
 fi
 
 if grep -q "Fedora" $release_file ; then
-  # the host is based on Fedora, run the pacman upgrade command
+  # the host is based on Fedora, run the dnf upgrade command
   sudo dnf upgrade
+fi
+
+if grep -q "opensuse-tumbleweed" $release_file ; then
+  # the host is based on OpenSUSE Tumbleweed, run the zypper command
+  sudo zypper dup
+fi
+
+if grep -q "opensuse-leap" $release_file ; then
+  # the host is based on OpenSUSE Leap, run the zypper command
+  sudo zypper up
 fi
 
 exit
