@@ -3,8 +3,11 @@
 # A script to update a linux distro based on Arch or Debian
 #
 # Copyright (C) 2024 Ronald Jørnsøn
+# 45grn6meov@runbox.email
 #
-# 
+# SPDX-License_Identifier: GPL-3.0-or-later
+#
+# https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
 if [ -d /etc/apt ] ; then
   # the host is based on Debian, run the apt update command.
@@ -15,6 +18,11 @@ fi
 if [ -d /etc/pacman.d ] ; then
   # the host is based on arch, run the pacman update command.
   sudo pacman -Syu
+fi
+
+if [ -d /etc/dnf ] ; then
+  # the host is based on Fedora, run the pacman upgrade command
+  sudo dnf upgrade
 fi
 
 exit
