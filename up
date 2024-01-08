@@ -6,4 +6,15 @@
 #
 # 
 
- 
+if [ -d /etc/apt ] ; then
+  # the host is based on Debian, run the apt update command.
+  sudo apt-get update
+  sudo apt-get full-upgrade -y
+fi
+
+if [ -d /etc/pacman.d ] ; then
+  # the host is based on arch, run the pacman update command.
+  sudo pacman -Syu
+fi
+
+exit
