@@ -14,7 +14,7 @@ release_file=/etc/os-release
 if grep -q "debian" $release_file ; then
   # the host is based on Debian, run the apt update command.
   sudo apt-get update
-  sudo apt-get full-upgrade -y
+  sudo apt-get dist-upgrade -y
 fi
 
 if grep -q "Arch" $release_file ; then
