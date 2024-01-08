@@ -9,18 +9,20 @@
 #
 # https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
-if [ -d /etc/apt ] ; then
+release_file=/etc/os-release
+
+if grep -q "Debian" $release_file ; then
   # the host is based on Debian, run the apt update command.
   sudo apt-get update
   sudo apt-get full-upgrade -y
 fi
 
-if [ -d /etc/pacman.d ] ; then
+if grep -q "Arch" $release_file ; then
   # the host is based on arch, run the pacman update command.
   sudo pacman -Syu
 fi
 
-if [ -d /etc/dnf ] ; then
+if grep -q "Fedora" $release_file ; then
   # the host is based on Fedora, run the pacman upgrade command
   sudo dnf upgrade
 fi
