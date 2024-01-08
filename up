@@ -9,6 +9,8 @@
 #
 # https://www.gnu.org/licenses/gpl-3.0-standalone.html
 
+set -e
+
 release_file=/etc/os-release
 
 if grep -q "debian" $release_file ; then
